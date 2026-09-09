@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const mapsUrl =
+  'https://www.google.com/maps/search/?api=1&query=19A+Aviemore+Drive+Highland+Park+Auckland';
+
+const intermediate = [
+  'Change engine oil',
+  'Change oil filter',
+  'Check radiator',
+  'Check all lights',
+  'Check differential',
+  'Check & adjust tyre pressures',
+  'Suspension check',
+  'Check windscreen wipers',
+  'Check battery',
+  'Check power steering',
+  'Check air filter',
+  'Top up all fluid levels',
+  'Check drive belts',
+];
+
+const gold = [
+  'Everything in Intermediate',
+  'Renew spark plugs',
+  'Remove all wheels, clean & adjust brakes',
+  'Full tune',
+];
+---
+
+<BaseLayout
+  title="Services & prices"
+  description="WOF from $75, Intermediate service $295, Gold service $425. Heath Automotive, Highland Park Auckland."
+  currentPath="/services"
+>
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Heath Automotive</p>
+      <h1>WOF, servicing &amp; repairs</h1>
+      <p class="lead">
+        Straightforward work, fair prices — call or drop in and we’ll fit you in.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="card-grid">
+        <article class="card">
+          <h3>WOF</h3>
+          <p class="price">$75</p>
+          <p>Cars $75 · Bikes $75 · Trailers $75</p>
+          <p class="card-note">WOF with a service: $65</p>
+          <p>Make getting your next Warrant of Fitness easy. Give us a call and we’ll fit you in asap.</p>
+        </article>
+        <article class="card">
+          <h3>Repairs</h3>
+          <p class="price">Call</p>
+          <p>We’ll get you sorted. Don’t let something small turn into something expensive.</p>
+          <p><a href="tel:+6495375694">(09) 537 5694</a></p>
+        </article>
+      </div>
+
+      <div class="checklist-grid" style="margin-top: 1.5rem;">
+        <article class="card">
+          <h3>Intermediate service</h3>
+          <p class="price">$295</p>
+          <ul>
+            {intermediate.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Gold service</h3>
+          <p class="price">$425</p>
+          <ul>
+            {gold.map((item) => <li>{item}</li>)}
+          </ul>
+          <p class="muted" style="margin-top: 0.75rem;">
+            Gold includes the Intermediate checklist plus plugs, brake clean &amp; adjust, and a full tune.
+          </p>
+        </article>
+      </div>
+
+      <p class="price-disclaimer">
+        Prices are based on 4-cylinder Japanese vehicles. Special requirements? Give us a call and
+        we’ll sort you out.
+      </p>
+
+      <div class="btn-row btn-row--tight" style="margin-top: 1.5rem;">
+        <a class="btn btn-primary" href="tel:+6495375694">Call (09) 537 5694</a>
+        <a class="btn btn-secondary" href={mapsUrl} rel="noopener noreferrer" target="_blank"
+          >Get directions</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Vehicle inspection</h2>
+      <div class="card-grid card-grid--3">
+        <article class="card">
+          <h3>Driveline &amp; tyres</h3>
+          <p>CV boots and joints, oil, filters and coolant. Belts and tyres checked.</p>
+        </article>
+        <article class="card">
+          <h3>Brakes</h3>
+          <p>We’ll check the entire brake system and give you peace of mind.</p>
+        </article>
+        <article class="card">
+          <h3>Suspension</h3>
+          <p>Shocks, springs and ball joints covered.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

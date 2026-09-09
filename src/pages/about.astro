@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const mapsUrl =
+  'https://www.google.com/maps/search/?api=1&query=19A+Aviemore+Drive+Highland+Park+Auckland';
+---
+
+<BaseLayout
+  title="About"
+  description="Highland Park workshop behind Denny’s — local team, transparent pricing, 4.9★ Google. Heath Automotive."
+  currentPath="/about"
+>
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow">About us</p>
+      <h1>Highland Park workshop behind Denny’s</h1>
+      <p class="lead">
+        Local team, transparent pricing, 4.9★ Google from 83+ reviews.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="info-grid">
+        <div>
+          <h2>Who we are</h2>
+          <p>
+            Heath Automotive is a trade workshop in Highland Park / Pakuranga, easy to find behind
+            Denny’s on Aviemore Drive. We keep WOF, servicing and repairs straightforward — fair
+            prices, clear communication, and work you can trust.
+          </p>
+          <p>
+            Locals have been recommending us for years. Whether you need a quick WOF, an Intermediate
+            or Gold service, or a repair sorted before it gets expensive, drop in or call and we’ll
+            fit you in.
+          </p>
+          <ul class="chips chips--light" style="margin-top: 1rem;">
+            <li>4.9★ Google (83+)</li>
+            <li>Open drop-in</li>
+            <li>Mon–Fri 8:00am–4:30pm</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Find us</h2>
+          <div class="info-block">
+            <p>
+              <strong>19A Aviemore Drive</strong><br />
+              Highland Park, Auckland 2010
+            </p>
+            <p class="card-note">Landmark: behind Denny’s on Aviemore Drive</p>
+            <p><a href="tel:+6495375694">(09) 537 5694</a></p>
+            <div class="btn-row" style="margin-top: 1rem;">
+              <a class="btn btn-primary" href="tel:+6495375694">Call</a>
+              <a class="btn btn-secondary" href={mapsUrl} rel="noopener noreferrer" target="_blank"
+                >Directions</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Workshop photos</h2>
+      <p class="lead muted">
+        {/* WebP assets coming — placeholders until real workshop photos are ready */}
+        Placeholder for workshop photos. WebP assets coming.
+      </p>
+      <div class="gallery">
+        <div class="gallery-slot">Workshop photo 1</div>
+        <div class="gallery-slot">Workshop photo 2</div>
+        <div class="gallery-slot">Workshop photo 3</div>
+        <div class="gallery-slot">Workshop photo 4</div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

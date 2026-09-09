@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const mapsUrl =
+  'https://www.google.com/maps/search/?api=1&query=19A+Aviemore+Drive+Highland+Park+Auckland';
+
+const chips = [
+  '4.9★ Google (83+)',
+  'WOF from $65 with service',
+  'Intermediate $295',
+  'Gold $425',
+  'Open drop-in behind Denny’s',
+  'Hours Mon–Fri 8:00am–4:30pm',
+];
+
+const services = [
+  {
+    title: 'WOF',
+    price: '$75',
+    detail: 'Cars, bikes and trailers',
+    note: 'Combo $65 with a service',
+  },
+  {
+    title: 'Intermediate service',
+    price: '$295',
+    detail: 'Oil, filters, fluids, lights, belts, suspension check and more',
+    note: null,
+  },
+  {
+    title: 'Gold service',
+    price: '$425',
+    detail: 'Everything in Intermediate, plus plugs, brake clean & adjust, full tune',
+    note: null,
+  },
+  {
+    title: 'Repairs',
+    price: 'Call',
+    detail: 'We’ll get you sorted — don’t let something small turn expensive',
+    note: null,
+  },
+];
+
+const reviews = [
+  {
+    name: 'Michael Wang',
+    quote:
+      'I have been taking my car to this workshop for maintenance and repairs for over 20 years. Their staff are highly skilled, and the pricing is transparent and fair. I am very happy to recommend them to everyone.',
+  },
+  {
+    name: 'Anna Williams',
+    quote:
+      'We traveled to Auckland from Gisborne to pick up a car we bought on trademe. It ended up needing some emergency work before the trip home. Mark and Boris went above and beyond to get things sorted for us. Highly recommend.',
+  },
+  {
+    name: 'Nazreen Nisha Hassan',
+    quote:
+      'Excellent customer service, efficient and fast work done on my car. Very happy with the service 😀.',
+  },
+];
+
+const gallerySlots = [
+  'Workshop bay',
+  'Service desk',
+  'Exterior',
+  'WOF lane',
+  'Team at work',
+  'Parking / access',
+  'Aviemore Drive',
+  'Behind Denny’s',
+];
+---
+
+<BaseLayout
+  title="Heath Automotive | WOF & servicing Highland Park"
+  description="WOF and servicing you can trust in Highland Park. Local workshop behind Denny’s on Aviemore Drive. Call (09) 537 5694."
+  currentPath="/"
+>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Highland Park · Pakuranga</p>
+      <h1>WOF and servicing you can trust — call or drop in</h1>
+      <p class="lead">
+        Local workshop behind Denny’s on Aviemore Drive. Fast fittings, fair pricing, real reviews.
+      </p>
+      <div class="btn-row btn-row--tight">
+        <a class="btn btn-primary" href="tel:+6495375694">Call (09) 537 5694</a>
+        <a class="btn btn-secondary btn-on-dark" href={mapsUrl} rel="noopener noreferrer" target="_blank"
+          >Get directions</a
+        >
+      </div>
+      <ul class="chips" aria-label="Trust highlights">
+        {chips.map((chip) => <li>{chip}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Your local Highland Park workshop</h2>
+      <p class="lead">
+        Heath Automotive is a straightforward trade workshop behind Denny’s on Aviemore Drive.
+        Drop in for a WOF or service — we’ll fit you in. Transparent pricing, skilled work, and a
+        4.9★ Google rating from 83+ reviews.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Services &amp; prices</h2>
+      <p class="lead">Straightforward work, fair prices — call or drop in.</p>
+      <div class="card-grid card-grid--4">
+        {
+          services.map((s) => (
+            <article class="card">
+              <h3>{s.title}</h3>
+              <p class="price">
+                {s.price}
+                {s.price !== 'Call' && <small> from</small>}
+              </p>
+              <p>{s.detail}</p>
+              {s.note && <p class="card-note">{s.note}</p>}
+            </article>
+          ))
+        }
+      </div>
+      <p class="price-disclaimer">
+        Prices are based on 4-cylinder Japanese vehicles.
+        <a href="/services">Full service details →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>What locals say</h2>
+      <p class="lead">4.9★ on Google from more than 83 reviews.</p>
+      <div class="card-grid card-grid--3" style="margin-top: 1.25rem;">
+        {
+          reviews.map((r) => (
+            <article class="review">
+              <div class="stars" aria-hidden="true">★★★★★</div>
+              <blockquote>“{r.quote}”</blockquote>
+              <cite>{r.name}</cite>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Around the workshop</h2>
+      <p class="lead muted">
+        {/* WebP assets coming — muted placeholders until workshop photos are ready */}
+        Photo gallery placeholders. WebP assets coming.
+      </p>
+      <div class="gallery" aria-label="Workshop photo placeholders">
+        {gallerySlots.map((label) => <div class="gallery-slot">{label}</div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2>Ready when you are</h2>
+      <p class="lead">Call or drop in behind Denny’s on Aviemore Drive. Mon–Fri 8:00am–4:30pm.</p>
+      <div class="btn-row btn-row--tight">
+        <a class="btn btn-primary" href="tel:+6495375694">Call (09) 537 5694</a>
+        <a class="btn btn-secondary btn-on-dark" href={mapsUrl} rel="noopener noreferrer" target="_blank"
+          >Get directions</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>What are your hours?</summary>
+          <p>Monday to Friday 8:00am–4:30pm. Closed Saturday and Sunday.</p>
+        </details>
+        <details>
+          <summary>How much is a WOF?</summary>
+          <p>
+            WOF is $75 for cars, bikes and trailers. Combined with a service, WOF is $65.
+          </p>
+        </details>
+        <details>
+          <summary>Can I drop in without an appointment?</summary>
+          <p>
+            Yes — open drop-in behind Denny’s. Give us a call and we’ll fit you in as soon as we can.
+          </p>
+        </details>
+        <details>
+          <summary>Where are you?</summary>
+          <p>
+            19A Aviemore Drive, Highland Park, Auckland 2010 — behind Denny’s on Aviemore Drive.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

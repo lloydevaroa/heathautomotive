@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const mapsUrl =
+  'https://www.google.com/maps/search/?api=1&query=19A+Aviemore+Drive+Highland+Park+Auckland';
+const embedUrl =
+  'https://maps.google.com/maps?q=19A+Aviemore+Drive+Highland+Park+Auckland+2010&z=16&output=embed';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Call Heath Automotive on (09) 537 5694. 19A Aviemore Drive, Highland Park — behind Denny’s. Mon–Fri 8:00am–4:30pm."
+  currentPath="/contact"
+>
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Get in touch</p>
+      <h1>Contact</h1>
+      <p class="lead">Call, drop in, or send a quick message. We’re behind Denny’s on Aviemore Drive.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="btn-row btn-row--tight" style="margin-bottom: 1.5rem;">
+        <a class="btn btn-primary" href="tel:+6495375694">Call (09) 537 5694</a>
+        <a class="btn btn-secondary" href={mapsUrl} rel="noopener noreferrer" target="_blank"
+          >Get directions</a
+        >
+      </div>
+
+      <div class="info-grid">
+        <div class="info-block">
+          <h3>Phone</h3>
+          <p><a class="phone-lg" href="tel:+6495375694">(09) 537 5694</a></p>
+          <h3 style="margin-top: 1.25rem;">Address</h3>
+          <p>
+            19A Aviemore Drive<br />
+            Highland Park, Auckland 2010
+          </p>
+          <p class="card-note">Landmark: behind Denny’s on Aviemore Drive</p>
+          <h3 style="margin-top: 1.25rem;">Hours</h3>
+          <p>
+            Mon–Fri 8:00am–4:30pm<br />
+            Closed Sat–Sun
+          </p>
+        </div>
+        <div>
+          <iframe
+            class="map-frame"
+            title="Map — Heath Automotive, 19A Aviemore Drive"
+            src={embedUrl}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+          <p class="muted" style="margin-top: 0.5rem;">
+            <a href={mapsUrl} rel="noopener noreferrer" target="_blank">Open in Google Maps</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width: 36rem;">
+      <h2>Send a message</h2>
+      <p class="muted">
+        Quiet backup form — opens your email app. Prefer a call? Use the button above.
+      </p>
+      <form
+        class="contact-form"
+        action="mailto:hello@heathautomotive.co.nz"
+        method="get"
+        enctype="text/plain"
+      >
+        <label>
+          Name
+          <input type="text" name="name" id="contact-name" placeholder="Your name" required />
+        </label>
+        <label>
+          Phone or email
+          <input type="text" name="contact" id="contact-reach" placeholder="How we can reach you" required />
+        </label>
+        <label>
+          Message
+          <textarea name="body" id="contact-message" rows="4" placeholder="What do you need help with?" required></textarea>
+        </label>
+        <input type="hidden" name="subject" id="contact-subject" value="Enquiry from heathautomotive.co.nz" />
+        <button class="btn btn-primary" type="submit">Open email</button>
+      </form>
+      <script>
+        const form = document.querySelector('.contact-form');
+        form?.addEventListener('submit', (e) => {
+          const name = (document.getElementById('contact-name')).value.trim();
+          const reach = (document.getElementById('contact-reach')).value.trim();
+          const message = (document.getElementById('contact-message')).value.trim();
+          const subject = document.getElementById('contact-subject');
+          const body = document.getElementById('contact-message');
+          subject.value = `Enquiry from ${name || 'website'}`;
+          body.name = 'body';
+          body.value = `Name: ${name}\nContact: ${reach}\n\n${message}`;
+        });
+      </script>
+      <p class="muted" style="margin-top: 0.75rem;">
+        Or call <a href="tel:+6495375694">(09) 537 5694</a> — fastest way to get fitted in.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
