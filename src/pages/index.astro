@@ -59,14 +59,14 @@ const reviews = [
 ];
 
 const gallerySlots = [
-  'Workshop bay',
-  'Service desk',
-  'Exterior',
-  'WOF lane',
-  'Team at work',
-  'Parking / access',
-  'Aviemore Drive',
-  'Behind Denny’s',
+  { src: '/images/heath-01.webp', alt: 'Mark handing keys to a happy customer at the service desk' },
+  { src: '/images/heath-02.webp', alt: 'Mark and a customer discussing an open engine bay' },
+  { src: '/images/heath-03.webp', alt: 'Technician writing on a clipboard beside a Falcon ute' },
+  { src: '/images/heath-04.webp', alt: 'Mark working on a polished performance engine' },
+  { src: '/images/heath-05.webp', alt: 'Mark smiling at the Heath Automotive service desk' },
+  { src: '/images/heath-06.webp', alt: 'Mark with clipboard in the workshop bay' },
+  { src: '/images/heath-07.webp', alt: 'Close-up of Auto Meter gauges in a custom dash' },
+  { src: '/images/heath-08.webp', alt: 'Heath Automotive visual inspection report with car keys' },
 ];
 ---
 
@@ -152,12 +152,15 @@ const gallerySlots = [
   <section class="section">
     <div class="container">
       <h2>Around the workshop</h2>
-      <p class="lead muted">
-        {/* WebP assets coming — muted placeholders until workshop photos are ready */}
-        Photo gallery placeholders. WebP assets coming.
-      </p>
-      <div class="gallery" aria-label="Workshop photo placeholders">
-        {gallerySlots.map((label) => <div class="gallery-slot">{label}</div>)}
+      <p class="lead">Real photos from the Highland Park bay — team, cars, and the day-to-day.</p>
+      <div class="gallery" aria-label="Workshop photos">
+        {
+          gallerySlots.map((item) => (
+            <figure class="gallery-slot">
+              <img src={item.src} alt={item.alt} loading="lazy" width="800" height="600" />
+            </figure>
+          ))
+        }
       </div>
     </div>
   </section>
