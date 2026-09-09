@@ -839,7 +839,16 @@ a.btn-primary:hover,
 
 .closing-cta .container {
   max-width: 40rem;
+  margin-inline: auto;
+  text-align: center;
 }
 .closing-cta p {
   max-width: 36rem;
+  margin-inline: auto;
+}
+.closing-cta .btn-row,
+.closing-cta .cta-row,
+.closing-cta .hero-ctas,
+.closing-cta .actions {
+  justify-content: center;
 }
