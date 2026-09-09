@@ -98,13 +98,23 @@ const gallerySlots = [
   </section>
 
   <section class="section section-alt">
-    <div class="container">
-      <h2>Your local Highland Park workshop</h2>
-      <p class="lead">
-        Heath Automotive is a straightforward trade workshop behind Denny’s on Aviemore Drive.
-        Drop in for a WOF or service — we’ll fit you in. Transparent pricing, skilled work, and a
-        4.9★ Google rating from 83+ reviews.
-      </p>
+    <div class="container about-split">
+      <div class="about-split__copy">
+        <h2>Your local Highland Park workshop</h2>
+        <p class="lead">
+          Heath Automotive is a straightforward trade workshop behind Denny’s on Aviemore Drive.
+          Drop in for a WOF or service — we’ll fit you in. Transparent pricing, skilled work, and a
+          4.9★ Google rating from 83+ reviews.
+        </p>
+        <ul class="about-split__chips" aria-label="Quick facts">
+          <li>4.9★ Google · 83+ reviews</li>
+          <li>Behind Denny’s · Highland Park</li>
+          <li>Mon–Fri 8:00am–4:30pm</li>
+        </ul>
+      </div>
+      <figure class="about-split__media">
+        <img src="/images/heath-05.webp" alt="Heath Automotive team at the Highland Park workshop" width="800" height="600" loading="lazy" />
+      </figure>
     </div>
   </section>
 
@@ -168,10 +178,10 @@ const gallerySlots = [
     </div>
   </section>
 
-  <section class="section section-dark">
+  <section class="section section-dark closing-cta">
     <div class="container">
       <h2>Ready when you are</h2>
-      <p class="lead">Call or drop in behind Denny’s on Aviemore Drive. Mon–Fri 8:00am–4:30pm.</p>
+      <p class="lead">Call or drop in behind Denny’s on Aviemore Drive.<br /><span class="hours-line">Mon–Fri 8:00am–4:30pm</span></p>
       <div class="btn-row btn-row--tight">
         <a class="btn btn-primary" href="tel:+6495375694">Call (09) 537 5694</a>
         <a class="btn btn-secondary btn-on-dark" href={mapsUrl} rel="noopener noreferrer" target="_blank"
