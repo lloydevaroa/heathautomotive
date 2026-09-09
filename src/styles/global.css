@@ -100,6 +100,10 @@ p { margin: 0 0 1rem; }
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+.layout-hero-overlay .site-header--overlay:not(.is-solid) {
+  position: absolute;
+}
+
 .header-inner {
   display: flex;
   align-items: center;
@@ -141,7 +145,7 @@ p { margin: 0 0 1rem; }
 
 .nav a:hover,
 .nav a[aria-current="page"] {
-  color: #fdba74;
+  color: var(--accent);
 }
 
 .header-call {
@@ -307,7 +311,7 @@ p { margin: 0 0 1rem; }
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* —— Hero —— */
+/* —— Hero (Kari-inspired full-bleed) —— */
 .hero {
   background: linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 100%);
   color: var(--white);
@@ -315,36 +319,73 @@ p { margin: 0 0 1rem; }
   position: relative;
   overflow: hidden;
 }
-.hero::before {
+
+.hero--bleed {
+  min-height: min(92vh, 820px);
+  display: flex;
+  align-items: center;
+  padding: calc(var(--header-h) + 2.75rem) 0 3.5rem;
+}
+
+.hero--bleed::before {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(160deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 41, 59, 0.82) 100%),
-    url('/images/heath-01.webp') center/cover no-repeat;
+    linear-gradient(
+      105deg,
+      rgba(26, 26, 26, 0.88) 0%,
+      rgba(26, 26, 26, 0.72) 38%,
+      rgba(26, 26, 26, 0.42) 68%,
+      rgba(26, 26, 26, 0.35) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(26, 26, 26, 0.55) 0%,
+      rgba(26, 26, 26, 0.2) 45%,
+      rgba(26, 26, 26, 0.5) 100%
+    ),
+    url("/images/heath-01.webp") center / cover no-repeat;
   z-index: 0;
 }
-.hero > .container {
+
+.hero > .container,
+.hero-inner {
   position: relative;
   z-index: 1;
+  width: min(100% - 2rem, var(--max));
+  margin-inline: auto;
+}
+
+.hero-copy {
+  max-width: 34rem;
+  padding-right: 1rem;
 }
 
 .hero h1 {
   color: var(--white);
   margin-bottom: 0.85rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.35);
 }
 
 .hero .eyebrow {
-  color: #fdba74;
+  color: var(--accent);
 }
 
 .hero .lead {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 1.5rem;
 }
 
 .hero .btn-row {
   margin-bottom: 1.75rem;
+}
+
+@media (min-width: 900px) {
+  .hero-copy {
+    max-width: 36rem;
+  }
 }
 
 /* —— Trust chips —— */
@@ -710,8 +751,34 @@ a.btn-primary:hover,
   color: var(--text) !important;
 }
 
-.site-header {
-  background: var(--navy) !important;
+/* Solid charcoal header by default; transparent when overlaying home hero */
+.site-header:not(.site-header--overlay),
+.site-header--overlay.is-solid {
+  background: rgba(26, 26, 26, 0.96) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(8px);
+}
+
+.site-header--overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent !important;
+  box-shadow: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.site-header--overlay.is-solid {
+  position: fixed;
+}
+
+.site-header--overlay .nav-mobile.open {
+  background: rgba(26, 26, 26, 0.96);
+  margin-top: 0.25rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem 0.85rem;
+  border-top: none;
 }
 
 .band-yellow,

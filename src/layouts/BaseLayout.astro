@@ -7,12 +7,14 @@ interface Props {
   title: string;
   description?: string;
   currentPath?: string;
+  overlayHeader?: boolean;
 }
 
 const {
   title,
   description = 'Heath Automotive — WOF, servicing and repairs in Highland Park, Auckland. Behind Denny’s on Aviemore Drive. Call (09) 537 5694.',
   currentPath = '/',
+  overlayHeader = false,
 } = Astro.props;
 
 const fullTitle = title.includes('Heath Automotive')
@@ -30,12 +32,12 @@ const fullTitle = title.includes('Heath Automotive')
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='16' y='22' text-anchor='middle' font-size='14' font-family='system-ui' font-weight='700' fill='%23ea580c'>HA</text></svg>" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a1a1a'/><text x='16' y='22' text-anchor='middle' font-size='14' font-family='system-ui' font-weight='700' fill='%23f3b93e'>HA</text></svg>" />
     <title>{fullTitle}</title>
   </head>
-  <body>
+  <body class:list={[overlayHeader && 'layout-hero-overlay']}>
     <a class="skip-link" href="#main">Skip to content</a>
-    <Header currentPath={currentPath} />
+    <Header currentPath={currentPath} overlay={overlayHeader} />
     <main id="main" class="page-main">
       <slot />
     </main>

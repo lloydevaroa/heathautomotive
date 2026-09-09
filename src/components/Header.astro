@@ -1,9 +1,10 @@
 ---
 interface Props {
   currentPath?: string;
+  overlay?: boolean;
 }
 
-const { currentPath = '/' } = Astro.props;
+const { currentPath = '/', overlay = false } = Astro.props;
 
 const links = [
   { href: '/', label: 'Home' },
@@ -13,7 +14,10 @@ const links = [
 ];
 ---
 
-<header class="site-header">
+<header
+  class:list={['site-header', overlay && 'site-header--overlay']}
+  data-overlay={overlay ? 'true' : undefined}
+>
   <div class="container header-inner">
     <a class="logo" href="/">
       <img src="/heathautomotive_white.webp" alt="Heath Automotive" width="180" height="40" />
@@ -69,4 +73,13 @@ const links = [
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   });
+
+  const header = document.querySelector('.site-header[data-overlay="true"]');
+  if (header) {
+    const onScroll = () => {
+      header.classList.toggle('is-solid', window.scrollY > 48);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
 </script>
