@@ -60,13 +60,13 @@ const reviews = [
 
 const gallerySlots = [
   { src: '/images/heath-01.webp', alt: 'Mark handing keys to a happy customer at the service desk' },
-  { src: '/images/heath-02.webp', alt: 'Mark and a customer discussing an open engine bay' },
+  { src: '/images/heath-08.webp', alt: 'Heath Automotive visual inspection report with car keys' },
   { src: '/images/heath-03.webp', alt: 'Technician writing on a clipboard beside a Falcon ute' },
   { src: '/images/heath-04.webp', alt: 'Mark working on a polished performance engine' },
-  { src: '/images/heath-05.webp', alt: 'Mark smiling at the Heath Automotive service desk' },
+  { src: '/images/heath-3803.webp', alt: 'Workshop scene at Heath Automotive Highland Park' },
   { src: '/images/heath-06.webp', alt: 'Mark with clipboard in the workshop bay' },
   { src: '/images/heath-07.webp', alt: 'Close-up of Auto Meter gauges in a custom dash' },
-  { src: '/images/heath-08.webp', alt: 'Heath Automotive visual inspection report with car keys' },
+  { src: '/images/heath-02.webp', alt: 'Mark and a customer discussing an open engine bay' },
 ];
 ---
 
@@ -77,6 +77,58 @@ const gallerySlots = [
   overlayHeader
 >
   <section class="hero hero--bleed" aria-label="Introduction">
+    <div class="hero-bg" aria-hidden="true">
+      <img
+        class="hero-slide is-active"
+        src="/images/heath-01.webp"
+        alt=""
+        width="1600"
+        height="1066"
+        decoding="async"
+        style="object-position: 45% center"
+      />
+      <img
+        class="hero-slide"
+        src="/images/hero-3595.webp"
+        alt=""
+        width="1600"
+        height="1066"
+        decoding="async"
+        loading="lazy"
+        style="object-position: 72% center"
+      />
+      <img
+        class="hero-slide"
+        src="/images/hero-3758.webp"
+        alt=""
+        width="1600"
+        height="1066"
+        decoding="async"
+        loading="lazy"
+        style="object-position: 68% center"
+      />
+      <img
+        class="hero-slide"
+        src="/images/hero-3766.webp"
+        alt=""
+        width="1600"
+        height="1066"
+        decoding="async"
+        loading="lazy"
+        style="object-position: 50% center"
+      />
+      <img
+        class="hero-slide"
+        src="/images/hero-3819.webp"
+        alt=""
+        width="1600"
+        height="1066"
+        decoding="async"
+        loading="lazy"
+        style="object-position: 78% center"
+      />
+      <div class="hero-scrim"></div>
+    </div>
     <div class="container hero-inner">
       <div class="hero-copy">
         <p class="eyebrow">Highland Park · Pakuranga</p>
@@ -96,6 +148,21 @@ const gallerySlots = [
       </div>
     </div>
   </section>
+
+  <script>
+    (() => {
+      const slides = Array.from(document.querySelectorAll('.hero-slide'));
+      if (slides.length < 2) return;
+      let i = 0;
+      const preferReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const intervalMs = preferReduced ? 12000 : 7000;
+      setInterval(() => {
+        slides[i].classList.remove('is-active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('is-active');
+      }, intervalMs);
+    })();
+  </script>
 
   <section class="section section-alt">
     <div class="container about-split">
