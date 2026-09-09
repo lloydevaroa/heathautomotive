@@ -787,3 +787,59 @@ a.btn-primary:hover,
   background: var(--accent);
   color: var(--text);
 }
+
+
+/* About split — copy + workshop photo */
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .about-split {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+  }
+}
+.about-split__chips {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.about-split__chips li {
+  background: var(--accent);
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+}
+.about-split__media {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.about-split__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.hours-line {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.closing-cta .container {
+  max-width: 40rem;
+}
+.closing-cta p {
+  max-width: 36rem;
+}
