@@ -57,14 +57,14 @@ const reviews = [
 ];
 
 const gallerySlots = [
-  { src: '/images/heath-01.webp', alt: 'Mark handing keys to a happy customer at the service desk' },
-  { src: '/images/heath-08.webp', alt: 'Heath Automotive visual inspection report with car keys' },
-  { src: '/images/heath-03.webp', alt: 'Technician writing on a clipboard beside a Falcon ute' },
-  { src: '/images/heath-04.webp', alt: 'Mark working on a polished performance engine' },
-  { src: '/images/heath-3803.webp', alt: 'Workshop scene at Heath Automotive Highland Park' },
-  { src: '/images/heath-06.webp', alt: 'Mark with clipboard in the workshop bay' },
-  { src: '/images/heath-07.webp', alt: 'Close-up of Auto Meter gauges in a custom dash' },
-  { src: '/images/heath-02.webp', alt: 'Mark and a customer discussing an open engine bay' },
+  { src: '/images/hero-3819.webp', alt: 'Hands working on an engine bay at Heath Automotive' },
+  { src: '/images/heath-5155.webp', alt: 'Workshop inspection paperwork and keys' },
+  { src: '/images/heath-5109.webp', alt: 'Workshop bay at Heath Automotive Highland Park' },
+  { src: '/images/heath-3768.webp', alt: 'Engine bay work in the Highland Park workshop' },
+  { src: '/images/heath-3767.webp', alt: 'Detail work in the Heath Automotive bay' },
+  { src: '/images/hero-3766.webp', alt: 'Close workshop detail at Heath Automotive' },
+  { src: '/images/heath-3696.webp', alt: 'Warrant of Fitness checksheet on a clipboard' },
+  { src: '/images/heath-3691.webp', alt: 'Spark plug and workshop tools' },
 ];
 ---
 
@@ -78,52 +78,42 @@ const gallerySlots = [
     <div class="hero-bg" aria-hidden="true">
       <img
         class="hero-slide is-active"
-        src="/images/heath-01.webp"
-        alt=""
-        width="1600"
-        height="1066"
-        decoding="async"
-        style="object-position: 45% center"
-      />
-      <img
-        class="hero-slide"
-        src="/images/hero-3595.webp"
-        alt=""
-        width="1600"
-        height="1066"
-        decoding="async"
-        loading="lazy"
-        style="object-position: 72% center"
-      />
-      <img
-        class="hero-slide"
-        src="/images/hero-3758.webp"
-        alt=""
-        width="1600"
-        height="1066"
-        decoding="async"
-        loading="lazy"
-        style="object-position: 68% center"
-      />
-      <img
-        class="hero-slide"
-        src="/images/hero-3766.webp"
-        alt=""
-        width="1600"
-        height="1066"
-        decoding="async"
-        loading="lazy"
-        style="object-position: 50% center"
-      />
-      <img
-        class="hero-slide"
         src="/images/hero-3819.webp"
         alt=""
         width="1600"
         height="1066"
         decoding="async"
-        loading="lazy"
         style="object-position: 78% center"
+      />
+      <img
+        class="hero-slide"
+        src="/images/hero-3803.webp"
+        alt=""
+        width="1600"
+        height="1066"
+        decoding="async"
+        loading="lazy"
+        style="object-position: 70% center"
+      />
+      <img
+        class="hero-slide"
+        src="/images/hero-3788.webp"
+        alt=""
+        width="1600"
+        height="1066"
+        decoding="async"
+        loading="lazy"
+        style="object-position: 65% center"
+      />
+      <img
+        class="hero-slide"
+        src="/images/hero-3787.webp"
+        alt=""
+        width="1600"
+        height="1066"
+        decoding="async"
+        loading="lazy"
+        style="object-position: 60% center"
       />
       <div class="hero-scrim"></div>
     </div>
@@ -178,7 +168,7 @@ const gallerySlots = [
         </ul>
       </div>
       <figure class="about-split__media">
-        <img src="/images/heath-05.webp" alt="Heath Automotive team at the Highland Park workshop" width="800" height="600" loading="lazy" />
+        <img src="/images/hero-3819.webp" alt="Hands at work in the Heath Automotive workshop" width="800" height="600" loading="lazy" />
       </figure>
     </div>
   </section>
@@ -230,7 +220,7 @@ const gallerySlots = [
   <section class="section">
     <div class="container">
       <h2>Around the workshop</h2>
-      <p class="lead">Real photos from the Highland Park bay — team, cars, and the day-to-day.</p>
+      <p class="lead">Real photos from the Highland Park bay — cars, tools, and the day-to-day.</p>
       <div class="gallery" aria-label="Workshop photos">
         {
           gallerySlots.map((item) => (
