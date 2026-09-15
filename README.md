@@ -1,138 +1,155 @@
 # Heath Automotive website
 
-Static site for [Heath Automotive](https://heathautomotive.co.nz) — Highland Park / Pakuranga workshop (WOF, servicing & repairs).
+Contemporary rebuild of [heathautomotive.co.nz](https://heathautomotive.co.nz/) — lean static site on GitHub + Cloudflare Pages.
 
-**Repo:** https://github.com/lloydevaroa/heathautomotive  
 **Staging:** https://heathautomotive.pages.dev/  
-**Stack:** [Astro](https://astro.build) → [Cloudflare Pages](https://pages.cloudflare.com/) (`npm run build` → `dist/`)
+**Repo:** https://github.com/lloydevaroa/heathautomotive
 
 ---
 
 ## Why we rebuilt
 
-The live site was an aging WordPress install. Goals for the rebuild:
-
-1. **Speed and cost** — lean static hosting on Cloudflare Pages instead of a heavy CMS.
-2. **Contemporary look** without feeling like a rebrand (keep Mark’s yellow / charcoal identity).
-3. **Call or drop-in first** — primary conversion is phone + directions for **WOF + servicing**. The contact form is backup, not the main funnel.
-
-Pages (no blog): **home · services · about · contact**.
-
-Design cues came from local trade sites (Eastern Bays, Dr Diesel, Thompson Automotive) — clean sans, dual CTAs, reviews early, suburb-first copy, service grid with prices, landmark “easy find” line — not clones of any one site.
+| Goal | Approach |
+|------|----------|
+| Faster page loads | Static Astro site on Cloudflare Pages (no WordPress hosting) |
+| Lower cost | Drop WP hosting spend |
+| Contemporary design | Kari Motors–inspired full-bleed hero + Eastern Bays / Dr Diesel UX cues |
+| Brand consistency | Original Heath yellow `#f3b93e`, Exo 2 headings (Eurostile Extended wordmark feel), charcoal on white |
 
 ---
 
-## Key decisions (locked)
+## What the site is for (marketing)
 
-### Brand
+**Primary job:** help people **call or drop in** — not lead-gen forms.
 
-| Token | Choice | Why |
-| --- | --- | --- |
-| Accent | `#f3b93e` yellow | Matches existing brand; navy/orange trial felt like a rebrand |
-| Text / ground | Charcoal on white | High contrast, workshop-plain |
-| Headings | Exo 2 | Stand-in for Eurostile Extended wordmark style |
-| Logo | `public/heathautomotive_white.webp` | Header wordmark (replaces captcha-blocked stub) |
+**Hero services:** WOF and servicing (bulk of the business). Repairs supported but secondary.
 
-### CTAs and proof
+**Main CTAs:** Call `(09) 537 5694` · Get directions (address / map). Contact form is a quiet backup only.
 
-- **Call** `(09) 537 5694` (`tel:+6495375694`)
-- **Directions** — 19A Aviemore Drive, Highland Park
-- **Hours** — Mon–Fri 8:00am–4:30pm (closed weekends)
-- Header + hero use matching solid yellow pills, charcoal text, one border-radius
-- Hero subcopy: *“Quick turnaround, fair pricing, real reviews.”* (avoid over-promising wait times)
-- Hero chips (four only): Google **4.9★ (83+)** · WOF from **$65** with service · Open drop-in behind Denny’s · Hours Mon–Fri 8:00am–4:30pm
-- Intermediate **$295** / Gold **$425** stay on **service cards** only (not hero chips)
-- Layout: full-bleed hero + transparent header (solid on scroll); about as two-column; closing CTA centered
-
-### Images (hard rule)
-
-**No photos of Mark / owner faces on the site** (owner request).
-
-| Slot | Locked WebP set (`public/images/`) |
-| --- | --- |
-| Hero slider | `hero-3766.webp`, `hero-3787.webp`, `hero-3788.webp`, `hero-3803.webp`, `hero-3819.webp` |
-| Gallery (“Around the workshop”) | `heath-3691.webp`, `heath-3696.webp`, `heath-3767.webp`, `heath-3768.webp`, `heath-5109.webp`, `heath-5155.webp` |
-
-Source pack: Google Drive workshop JPEGs (~65) — [Drive folder](https://drive.google.com/drive/folders/151JCut-MG3HV5f8F8JwW58CrjrqMM3er). Older `heath-01`…`heath-08` files may still sit in `public/images/` but pages should use the locked sets above.
+**Audience:** local private car owners around Highland Park / Pakuranga / East Auckland.
 
 ---
 
-## Process (what we did)
+## Brand locks
 
-1. **Scope** — WordPress → Astro + GitHub + Pages; CTA = call/drop-in; four pages; hold custom DNS until signed off.
-2. **Scaffold** — Astro site in this repo; Cloudflare Pages connected to `main`.
-3. **Brand pass** — Dropped navy/orange; locked yellow `#f3b93e`, charcoal, Exo 2 after Lloyd feedback.
-4. **Copy / UX locks** — Hero chips trimmed, CTA pills unified, subcopy locked, about split layout.
-5. **Photos** — Shortlist from Drive → WebP; face-check; swap to no-face hero/gallery sets.
-6. **Staging fill** — Missing WebP binaries pushed to `main` so staging hero/gallery load.
-7. **Client loop** — Mark update email drafted (reply in “Website update” thread with staging link); send when Lloyd is ready.
-8. **Contact form** — Resend planned for form mail; needs Mark’s domain/account — not finished.
+- **Accent:** `#f3b93e` (from the live WordPress site)
+- **Type:** Exo 2 for headings; clean sans for body
+- **Logo:** `public/heathautomotive_white.webp` (white wordmark on dark header)
+- **CTAs:** matching solid yellow pills, charcoal text, **one corner radius** on every button (header + hero)
+- **Voice:** suburb-first, landmark (“behind Denny’s”), proof over hard sell
 
----
+### Hero trust chips (four only)
 
-## Local development
+1. 4.9★ Google (83+)
+2. WOF from $65 with service *(standalone WOF remains $75 on the service card)*
+3. Open drop-in behind Denny’s
+4. Hours Mon–Fri 8:00am–4:30pm
 
-```bash
-npm install
-npm run dev
-```
+Intermediate `$295` and Gold `$425` stay on **service cards only** — not in the hero chips.
 
-```bash
-npm run build   # output → dist/
-npm run preview
-```
+### Hero subcopy
+
+> Local workshop behind Denny’s on Aviemore Drive. Quick turnaround, fair pricing, real reviews.
+
+(“Fast fittings” and “we’ll fit you in fast” were rejected — the workshop is often busy with tight schedules.)
 
 ---
 
-## Cloudflare Pages
+## Page set
 
-1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
-2. Select `lloydevaroa/heathautomotive`, branch `main`.
-3. Build settings:
+| Page | Role |
+|------|------|
+| Home | Kari-style hero, chips, intro, services & prices, reviews, gallery, FAQ, closing CTAs |
+| Services | WOF / Intermediate / Gold / Repairs detail + inspection blocks |
+| About | Workshop story + photos (no owner faces) |
+| Contact | Phone, address, hours, map / directions first; short backup form |
 
-| Setting | Value |
-| --- | --- |
-| Framework preset | Astro (or None) |
-| Build command | `npm run build` |
-| Build output directory | `dist` |
-| Root directory | `/` (default) |
-
-4. Deploy. Staging URL: https://heathautomotive.pages.dev/
-
-### Custom domain
-
-**heathautomotive.co.nz** DNS is held until go-live. When ready:
-
-1. Pages project → **Custom domains** → add `heathautomotive.co.nz` (and optionally `www`).
-2. Follow Cloudflare’s DNS instructions (do not configure DNS from this repo).
+No blog — lean for speed.
 
 ---
 
-## Project structure
+## Design references (inspiration, not clones)
 
-```
-src/
-  components/   Header, Footer
-  layouts/      BaseLayout
-  pages/        index, services, about, contact
-  styles/       global.css
-public/
-  heathautomotive_white.webp
-  images/       hero + gallery WebPs
-```
+- **Elevate Roofing** `.pages.dev` — lean trade UX example only (not a design bible)
+- **Eastern Bays Auto / Dr Diesel** — dual CTAs, early reviews, suburb copy, service grid, hours, FAQ
+- **Kari Motors** home-2 — full-bleed hero, transparent header, copy in open space for photos
+- **Thompson Automotive** — local Pakuranga rival (dated; easy to beat on polish)
+- **AA** — steal trust/structure, not look
+
+---
+
+## Images
+
+### Rules
+
+- **Owner (Mark) out of frame** — no face/owner shots anywhere (hard rule)
+- Locked IDs were **face-cleared** (no Mark); `3691` is hand + spark plug only
+- Prefer warm workshop photos from Google Drive; avoid stock garage clichés
+- WebP for Pages (~100–230 KB)
+
+### Locked sets (Drive IDs)
+
+**Hero rotate:** `3819` · `3803` · `3788` · `3787`  
+**Around the workshop gallery:** `3819` · `5155` · `5109` · `3768` · `3767` · `3766` · `3696` · `3691`  
+**About:** `3819` (hands/engine — no face)
+
+Drive pack: [Heath Automotive folder](https://drive.google.com/drive/folders/151JCut-MG3HV5f8F8JwW58CrjrqMM3er) (~65 JPEGs from ~2012 shoot).
+
+### Reviews (mid-page)
+
+- Michael Wang — 20+ years, transparent pricing  
+- Anna Williams — Mark and Boris went above and beyond  
+- Nazreen Nisha Hassan — efficient and fast  
+
+Stars + rating also above the fold; no heavy third-party review widgets (speed).
+
+---
+
+## Stack & deploy
+
+- **Framework:** Astro (static)
+- **Repo:** `lloydevaroa/heathautomotive` (public for setup)
+- **Host:** Cloudflare Pages  
+  - Build command: `npm run build`  
+  - Output directory: `dist`  
+  - Root: `/`
+- **Custom domain:** `heathautomotive.co.nz` — DNS held until ready to flip
+
+GitHub write for agents uses a **classic** PAT with `repo` scope (paste only in Moana’s 1:1 secure field — never in group chat).
+
+---
+
+## Process we followed (high level)
+
+1. Clarify goals (speed, cost, contemporary design) and marketing job (call / drop-in)
+2. Competitive / reference bar + Elevate as lean-trade example
+3. Lock copy, chips, prices, hours, CTAs
+4. Scaffold Astro → Cloudflare Pages staging
+5. Brand tokens (`#f3b93e`, Exo 2) after feedback on navy/orange
+6. Kari-style hero + image rotate; gallery refinements
+7. Owner-out-of-frame image lock; WebP assets (markup may land before binaries if PAT/binary push is blocked)
+8. Polish: matching CTA radius, chip trim, subcopy honesty
 
 ---
 
 ## Open / next
 
-- [ ] Mark reviews staging and green-lights go-live
-- [ ] Custom domain DNS for heathautomotive.co.nz
-- [ ] Resend (with Mark) for the contact form
-- [ ] Soft client email with staging link (Gmail thread “Website update”)
+- [x] WebP binaries for locked hero/gallery IDs on `main` / staging
+- [ ] Final visual once-over on https://heathautomotive.pages.dev/
+- [ ] Custom domain DNS for `heathautomotive.co.nz` when Lloyd is ready
+- [ ] Optional: remove staging-only notes once live
 
 ---
 
-## Contacts
+## Team
 
-- Owner: Mark — `mark@heathautomotive.co.nz`
-- Build / hosting: Lloyd Evaroa — Really Good Marketing
+| Role | Focus |
+|------|--------|
+| Te Ariki Marketing | Positioning, copy, brand tokens, CTA/chip rules |
+| Maeva Researcher | Competitive cues, Drive catalogue, face checks, research |
+| Moana The Builder | Astro scaffold, images, Cloudflare Pages, repo |
+| Marino the Project Manager | Scope, blockers, handoffs |
+
+---
+
+*Documented for handover — Sep 2026.*
