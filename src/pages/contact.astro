@@ -5,6 +5,10 @@ const mapsUrl =
   'https://www.google.com/maps/search/?api=1&query=19A+Aviemore+Drive+Highland+Park+Auckland';
 const embedUrl =
   'https://maps.google.com/maps?q=19A+Aviemore+Drive+Highland+Park+Auckland+2010&z=16&output=embed';
+
+// Public Turnstile site key (Cloudflare → Turnstile). Leave empty to hide the widget;
+// functions/api/contact.js only checks Turnstile once TURNSTILE_SECRET_KEY is set.
+const turnstileSiteKey = '';
 ---
 
 <BaseLayout
@@ -64,43 +68,46 @@ const embedUrl =
 
   <section class="section section-alt">
     <div class="container" style="max-width: 36rem;">
-      <h2>Send a message</h2>
+      <h2 id="message">Send a message</h2>
       <p class="muted">
-        Quiet backup form — opens your email app. Prefer a call? Use the button above.
+        Leave your details and we'll get back to you. Prefer a call? Use the button above.
       </p>
-      <form
-        class="contact-form"
-        action="mailto:hello@heathautomotive.co.nz"
-        method="get"
-        enctype="text/plain"
-      >
+      <p class="form-status form-status--ok" id="form-success" role="status" hidden>
+        Thanks, your message has been sent. We'll be in touch soon.
+      </p>
+      <p class="form-status form-status--error" id="form-error" role="alert" hidden>
+        Sorry, that didn't go through. Please try again or call us on
+        <a href="tel:+6495375694">(09) 537 5694</a>.
+      </p>
+      <form class="contact-form" action="/api/contact" method="post">
+        <input class="honeypot-field" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <input type="hidden" name="ts" id="contact-ts" />
         <label>
           Name
-          <input type="text" name="name" id="contact-name" placeholder="Your name" required />
+          <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
         </label>
         <label>
           Phone or email
-          <input type="text" name="contact" id="contact-reach" placeholder="How we can reach you" required />
+          <input type="text" name="contact" placeholder="How we can reach you" required />
         </label>
         <label>
           Message
-          <textarea name="body" id="contact-message" rows="4" placeholder="What do you need help with?" required></textarea>
+          <textarea name="message" rows="4" placeholder="What do you need help with?" required></textarea>
         </label>
-        <input type="hidden" name="subject" id="contact-subject" value="Enquiry from heathautomotive.co.nz" />
-        <button class="btn btn-primary" type="submit">Open email</button>
+        {turnstileSiteKey && <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>}
+        <button class="btn btn-primary" type="submit">Send message</button>
       </form>
+      {turnstileSiteKey && (
+        <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+      )}
       <script>
-        const form = document.querySelector('.contact-form');
-        form?.addEventListener('submit', (e) => {
-          const name = (document.getElementById('contact-name')).value.trim();
-          const reach = (document.getElementById('contact-reach')).value.trim();
-          const message = (document.getElementById('contact-message')).value.trim();
-          const subject = document.getElementById('contact-subject');
-          const body = document.getElementById('contact-message');
-          subject.value = `Enquiry from ${name || 'website'}`;
-          body.name = 'body';
-          body.value = `Name: ${name}\nContact: ${reach}\n\n${message}`;
-        });
+        // The form works as a plain POST without JS; this adds the fill-time
+        // bot check and shows the result after the redirect back here.
+        const ts = document.getElementById('contact-ts') as HTMLInputElement | null;
+        if (ts) ts.value = String(Date.now());
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('sent') === 'true') document.getElementById('form-success')?.removeAttribute('hidden');
+        if (params.get('error') === 'true') document.getElementById('form-error')?.removeAttribute('hidden');
       </script>
       <p class="muted" style="margin-top: 0.75rem;">
         Or call <a href="tel:+6495375694">(09) 537 5694</a> — fastest way to get fitted in.
