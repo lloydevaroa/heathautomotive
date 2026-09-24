@@ -6,6 +6,8 @@
 //   TURNSTILE_SECRET_KEY  (secret) — Turnstile check is skipped until this is set
 //   RESEND_FROM           (optional) — overrides FROM, e.g. "onboarding@resend.dev"
 //                         for testing before heathautomotive.co.nz is verified in Resend
+//   CONTACT_TO            (optional) — overrides RECIPIENT, so test sends can go to
+//                         Lloyd instead of Mark. Delete it at go-live.
 // See README.md.
 
 const RECIPIENT = "mark@heathautomotive.co.nz";
@@ -88,7 +90,7 @@ export async function onRequestPost({ request, env }) {
       },
       body: JSON.stringify({
         from: env.RESEND_FROM || FROM,
-        to: [RECIPIENT],
+        to: [env.CONTACT_TO || RECIPIENT],
         ...(replyTo && { reply_to: replyTo }),
         subject: `Website enquiry from ${name}`,
         html: `
