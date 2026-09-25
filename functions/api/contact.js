@@ -92,7 +92,7 @@ export async function onRequestPost({ request, env }) {
         from: env.RESEND_FROM || FROM,
         to: [env.CONTACT_TO || RECIPIENT],
         ...(replyTo && { reply_to: replyTo }),
-        subject: `Website enquiry from ${name}`,
+        subject: `WEBSITE FORM: ${name}`,
         html: `
           <p><strong>Name:</strong> ${escapeHtml(name)}</p>
           <p><strong>Phone or email:</strong> ${escapeHtml(contact)}</p>
