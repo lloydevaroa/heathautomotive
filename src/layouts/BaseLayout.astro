@@ -34,6 +34,30 @@ const fullTitle = title.includes('Heath Automotive')
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a1a1a'/><text x='16' y='22' text-anchor='middle' font-size='14' font-family='system-ui' font-weight='700' fill='%23f3b93e'>HA</text></svg>" />
     <title>{fullTitle}</title>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-LG6JQ4G9WH"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-LG6JQ4G9WH', { anonymize_ip: true });
+
+      // Calls and directions are the main conversions, so track link taps.
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (!a) return;
+        var href = a.getAttribute('href');
+        if (href.indexOf('tel:') === 0) {
+          gtag('event', 'phone_call_click', { link_url: href, page_path: location.pathname });
+        } else if (href.indexOf('google.com/maps') !== -1) {
+          gtag('event', 'directions_click', { link_url: href, page_path: location.pathname });
+        }
+      });
+
+      // The contact form redirects back with ?sent=true on success.
+      if (new URLSearchParams(location.search).get('sent') === 'true') {
+        gtag('event', 'generate_lead', { method: 'contact_form' });
+      }
+    </script>
   </head>
   <body class:list={[overlayHeader && 'layout-hero-overlay']}>
     <a class="skip-link" href="#main">Skip to content</a>
