@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="That page doesn’t exist. Call Heath Automotive on (09) 537 5694 or head back to the homepage."
+  currentPath="/404"
+>
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow">404</p>
+      <h1>We can’t find that page</h1>
+      <p class="lead">The link may be old or mistyped. Try one of these instead.</p>
+      <div class="btn-row btn-row--tight">
+        <a class="btn btn-primary" href="/">Back to home</a>
+        <a class="btn btn-secondary" href="/services">Services &amp; prices</a>
+        <a class="btn btn-secondary" href="tel:+6495375694">Call (09) 537 5694</a>
+      </div>
+    </div>
+  </header>
+</BaseLayout>
