@@ -791,8 +791,10 @@ p { margin: 0 0 1rem; }
   min-height: 0;
 }
 .header-inner {
-  /* Space between the top of the page and the header row (logo, nav, call button) */
-  padding-block: 30px;
+  /* Space between the top of the page and the header row (logo, nav, call button).
+     40px matches the gap between the footer copyright text and the page bottom. */
+  padding-top: 40px;
+  padding-bottom: 30px;
 }
 @media (max-width: 699px) {
   .header-inner {
