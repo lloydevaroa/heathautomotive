@@ -61,7 +61,7 @@ Intermediate `$295` and Gold `$425` stay on **service cards only** — not in th
 |------|------|
 | Home | Kari-style hero, chips, intro, services & prices, reviews, gallery, FAQ, closing CTAs |
 | Services | WOF / Intermediate / Gold / Repairs detail + inspection blocks |
-| About | Workshop story + photos (no owner faces) |
+| About | Workshop story + photos (Mark's face is OK here) |
 | Contact | Phone, address, hours, map / directions first; short backup form |
 
 No blog — lean for speed.
@@ -82,8 +82,8 @@ No blog — lean for speed.
 
 ### Rules
 
-- **Owner (Mark) out of frame** — no face/owner shots anywhere (hard rule)
-- Locked IDs were **face-cleared** (no Mark); `3691` is hand + spark plug only
+- **Owner (Mark) out of frame on Home, Services and Contact.** Mark's face is OK on the About page only (confirmed by Lloyd, 30 Sep 2026)
+- Home/Services/Contact IDs were **face-cleared** (no Mark); `3691` is hand + spark plug only
 - Prefer warm workshop photos from Google Drive; avoid stock garage clichés
 - WebP for Pages (~100–230 KB)
 
@@ -91,7 +91,7 @@ No blog — lean for speed.
 
 **Hero rotate:** `3819` · `3803` · `3788` · `3787`  
 **Around the workshop gallery:** `3819` · `5155` · `5109` · `3768` · `3767` · `3766` · `3696` · `3691`  
-**About:** `3819` (hands/engine — no face)
+**About:** Mark shots allowed: `hero-3758` (outside WOF station) · `heath-02` · `heath-03` · `heath-04`
 
 Drive pack: [Heath Automotive folder](https://drive.google.com/drive/folders/151JCut-MG3HV5f8F8JwW58CrjrqMM3er) (~65 JPEGs from ~2012 shoot).
 
