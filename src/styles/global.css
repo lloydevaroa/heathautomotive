@@ -782,9 +782,10 @@ p { margin: 0 0 1rem; }
   width: auto;
 }
 
-/* Logo clear space = height of the H in HEATH (about 14px at 36px logo height).
-   The PNG carries a few px of transparent margin (3.2 top, 2.4 bottom, 6.4 left,
-   7.2 right at this size), so the padding tops each side up to 14px of clear space. */
+/* Logo clear space: top and bottom padding equal the height of the H in HEATH.
+   The H is about 17px tall in the 45px-high logo file, so 13.6px at the 36px
+   display height, rounded to 14px. Applied as full padding on the link, on top
+   of the file's own small transparent margin. */
 .site-header,
 .header-inner {
   min-height: 0;
@@ -793,7 +794,7 @@ p { margin: 0 0 1rem; }
   padding-block: 0;
 }
 .logo {
-  padding: 10.8px 6.8px 11.6px 7.6px;
+  padding: 14px 6.8px 14px 7.6px;
 }
 .logo span {
   font-size: 0.75rem;
