@@ -792,11 +792,11 @@ p { margin: 0 0 1rem; }
 }
 .header-inner {
   /* Space between the top of the page and the header row (logo, nav, call button) */
-  padding-block: 16px;
+  padding-block: 30px;
 }
 @media (max-width: 699px) {
   .header-inner {
-    padding-block: 10px;
+    padding-block: 16px;
   }
 }
 .logo {
