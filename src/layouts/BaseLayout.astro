@@ -20,6 +20,44 @@ const {
 const fullTitle = title.includes('Heath Automotive')
   ? title
   : `${title} | Heath Automotive`;
+
+const site = Astro.site ?? new URL('https://heathautomotive.co.nz');
+const canonicalUrl = new URL(Astro.url.pathname, site).href;
+const ogImage = new URL('/og-image.jpg', site).href;
+
+const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'AutoRepair',
+  '@id': `${site.origin}/#business`,
+  name: 'Heath Automotive',
+  url: `${site.origin}/`,
+  image: ogImage,
+  telephone: '+64-9-537-5694',
+  description:
+    'WOF, servicing and repairs in Highland Park, Auckland. Local workshop behind Denny’s on Aviemore Drive.',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '19A Aviemore Drive',
+    addressLocality: 'Highland Park',
+    addressRegion: 'Auckland',
+    postalCode: '2010',
+    addressCountry: 'NZ',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '16:30',
+    },
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '83',
+  },
+};
 ---
 
 <!doctype html>
@@ -29,11 +67,26 @@ const fullTitle = title.includes('Heath Automotive')
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#1a1a1a" />
+    {!Astro.url.pathname.startsWith('/404') && <link rel="canonical" href={canonicalUrl} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Heath Automotive" />
+    <meta property="og:locale" content="en_NZ" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Car keys on a Heath Automotive WOF job sheet" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a1a1a'/><text x='16' y='22' text-anchor='middle' font-size='14' font-family='system-ui' font-weight='700' fill='%23f3b93e'>HA</text></svg>" />
     <title>{fullTitle}</title>
+    {Astro.url.pathname === '/' && (
+      <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
+    )}
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-LG6JQ4G9WH"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];

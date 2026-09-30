@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 
-const paths = ['/', '/services', '/about', '/contact'];
+const paths = ['/', '/services/', '/about/', '/contact/'];
 
 export const GET: APIRoute = ({ site }) => {
   const base = site ?? new URL('https://heathautomotive.co.nz');
